@@ -116,7 +116,7 @@ void Polynomial::eval(unsigned int x, LinkedList *expected_val){
     if(x < poly_size){
         std::cout<< "Failure";
     }else {
-        while (int i=0, i<x, i++) {
+        for (int i=0; i<x; i++) {
             temp->get_next();
         }
         if (temp->get_power()== expected_val->get_power() and temp->get_coeff()==expected_val->get_coeff()){
@@ -129,5 +129,32 @@ void Polynomial::eval(unsigned int x, LinkedList *expected_val){
 
 // add function
 void Polynomial::add(LinkedList *expected_poly){
-    
+    while (expected_poly!=nullptr and poly_head!=nullptr){
+        poly_head->set_coeff(poly_head->get_coeff()+expected_poly->get_coeff());
+        poly_head->set_coeff(poly_head->get_power()+expected_poly->get_power());
+        expected_poly = expected_poly->get_next();
+        poly_head = poly_head->get_next();
+    }
+    if (poly_head == nullptr){
+        poly_head->set_next(expected_poly->get_next());
+    }
+}
+
+// mult function
+
+void Polynomial::mult(LinkedList *expected_poly){
+    while (expected_poly!=nullptr and poly_head!=nullptr){
+        poly_head->set_coeff(poly_head->get_coeff()*expected_poly->get_coeff());
+        poly_head->set_coeff(poly_head->get_power()*expected_poly->get_power());
+        expected_poly = expected_poly->get_next();
+        poly_head = poly_head->get_next();
+    }
+    if (poly_head == nullptr){
+        poly_head->set_next(expected_poly->get_next());
+    }
+}
+
+// exit function
+void Polynomial::exit(){
+    // todo, prob stop reading file
 }

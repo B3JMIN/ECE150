@@ -14,22 +14,22 @@
 
 class LinkedList {
 public:
-    LinkedList(unsigned int power, double coeff);
+    LinkedList();
     ~LinkedList();
     unsigned int get_power() const;
     double get_coeff() const;
     LinkedList *get_next();
     
     void set_next(LinkedList *p_new_next);
+    void set_power(unsigned int power);
+    void set_coeff(double coeff);
 private:
     unsigned int power;
     double coeff;
     LinkedList *p_next;
 };
 
-LinkedList::LinkedList(unsigned int power, double coeff){
-    power = power;
-    coeff = coeff;
+LinkedList::LinkedList(){
 }
 LinkedList::~LinkedList(){
     // deconstruct
@@ -43,12 +43,12 @@ double LinkedList::get_coeff() const{
 LinkedList *LinkedList::get_next(){
     return p_next;
 }
-//void LinkedList::set_power(unsigned int power){
-//    power = power;
-//}
-//void LinkedList::set_coeff(double coeff){
-//    coeff = coeff;
-//}
+void LinkedList::set_power(unsigned int power){
+    power = power;
+}
+void LinkedList::set_coeff(double coeff){
+    coeff = coeff;
+}
 void LinkedList::set_next(LinkedList *p_new_next){
     p_next = p_new_next;
 }
